@@ -1,0 +1,6 @@
+{
+    "src/*": [
+        "eslint --fix",
+        "npx commitlint --edit"
+    ]
+}

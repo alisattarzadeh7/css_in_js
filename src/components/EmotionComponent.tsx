@@ -2,6 +2,7 @@ import {css} from '@emotion/react'
 import {PropsWithChildren, useEffect, useState} from "react";
 
 
+// https://github.com/emotion-js/emotion/issues/1921
 type EmotionComponentProps = PropsWithChildren<{
     color: string
     onClick: () => void

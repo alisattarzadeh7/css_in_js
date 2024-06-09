@@ -28,11 +28,12 @@ const Home = () => {
     }
 
 
-    useEffect(()=>{
-        setInterval(()=>{
+    useEffect(() => {
+        setInterval(() => {
             setCount(count + 1)
-        },3000)
-    },[])
+        }, 3000)
+
+    }, [])
 
 
     const handleMeasureEmotionRender: React.ProfilerOnRenderCallback = (id, phase, actualDuration, baseDuration, startTime, commitTime) => {
@@ -82,13 +83,13 @@ const Home = () => {
 
             <LinariaComponent draggable={false} onClick={handleClickLinaria}
                               color={`rgb(${count * 10},${count * 10},${count * 10})`}>
-               Linaria count down : {count}
+                Linaria count down : {count}
             </LinariaComponent>
         </Profiler>
         <Profiler id="SimpleComponent" onRender={handleMeasureLinariaRender}>
 
-            <button  onClick={handleClickEm}
-                              style={{color:`rgb(${count * 10},${count * 10},${count * 10})`}}>
+            <button onClick={handleClickEm}
+                    style={{color: `rgb(${count * 10},${count * 10},${count * 10})`}}>
                 Simple count up : {count}
             </button>
         </Profiler>

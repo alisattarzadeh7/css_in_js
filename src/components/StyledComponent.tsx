@@ -3,12 +3,10 @@ import {PropsWithChildren, useEffect, useState} from "react";
 
 
 type StyledComponentProps = PropsWithChildren<{
-    color: string
     onClick: () => void
     draggable?: boolean
 }>
 const Button = styled.button<{ position: { y: number, x: number } }>`
-    color: ${(props) => props.color};
     position: relative;
     top: ${(props) => `${props.position.y}px`};
     left: ${(props) => `${props.position.x}px`};
@@ -21,8 +19,8 @@ const StyledComponent: React.FC<StyledComponentProps> = ({children, draggable, .
 
         const handleUpdatePosition = (e: MouseEvent) => {
             setPosition({
-                x: e.pageX - 150,
-                y: e.pageY - 10
+                x: e.pageX - 30,
+                y: e.pageY - 30
             })
         }
         if (draggable)

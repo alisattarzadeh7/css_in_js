@@ -1,23 +1,14 @@
-import {styled} from "@linaria/react";
 import {PropsWithChildren, useEffect, useState} from "react";
 
 
-type LinariaComponentProps = PropsWithChildren<{
+type ButtonComponentProps = PropsWithChildren<{
     onClick: () => void
-    draggable: boolean
+    draggable?: boolean
 }>
 
+const EmotionComponent: React.FC<ButtonComponentProps> = ({children, draggable, ...props}) => {
 
-const Button = styled.button<{ position: { y: number, x: number } }>`
-    color: var(--color-accent);
-    position: relative;
-    top: ${(props) => `${props.position.y}px`};
-    left: ${(props) => `${props.position.x}px`};
-`
-
-const LinariaComponent: React.FC<LinariaComponentProps> = ({children, draggable, ...props}) => {
     const [position, setPosition] = useState<{ x: number, y: number }>({x: 0, y: 0})
-
 
     useEffect(() => {
 
@@ -35,9 +26,15 @@ const LinariaComponent: React.FC<LinariaComponentProps> = ({children, draggable,
 
         }
     }, [draggable])
-    return <Button {...props} position={position}>{
-        children
-    }</Button>
+
+    return <button
+        style={{
+            position: 'relative',
+            top: position.y,
+            left: position.x
+        }}
+        {...props}
+    >{children}</button>
 }
 
-export default LinariaComponent
+export default EmotionComponent

@@ -6,18 +6,35 @@ import EmotionThemeProvider from "./components/EmotionThemeProvider.tsx";
 import LinariaThemeProvider from "./components/LinariaThemeProvider.tsx";
 import createCache from "@emotion/cache";
 import {CacheProvider} from "@emotion/react";
+import Layout from "./Pages/Layout.tsx";
 
-const Home = lazy(() => import('./Pages/Home'));
-const About = lazy(() => import('./Pages/About'));
+const Emotion = lazy(() => import('./Pages/Emotion'));
+const Styled = lazy(() => import('./Pages/Styled'));
+const Linaria = lazy(() => import('./Pages/Linaria'));
+const Simple = lazy(() => import('./Pages/Simple'));
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Home/>,
-    },
-    {
-        path: "/about",
-        element: <About/>,
+        element: <Layout/>,
+        children:[
+            {
+                path:'emotion',
+                element:<Emotion/>
+            },
+            {
+                path:'styled',
+                element:<Styled/>
+            },
+            {
+                path:'linaria',
+                element:<Linaria/>
+            },
+            {
+                path:'simple',
+                element:<Simple/>
+            },
+        ]
     },
 ]);
 
